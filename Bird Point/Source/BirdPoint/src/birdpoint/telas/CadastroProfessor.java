@@ -105,10 +105,8 @@ public class CadastroProfessor extends javax.swing.JDialog {
         btFoto = new javax.swing.JButton();
         btCarregar = new javax.swing.JButton();
         btMaoDireita = new javax.swing.JButton();
-        tfEmail = new javax.swing.JLabel();
         btMaoEsquerda = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         btPesquisar = new javax.swing.JButton();
         tfNome = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -246,10 +244,6 @@ public class CadastroProfessor extends javax.swing.JDialog {
         getContentPane().add(btMaoDireita);
         btMaoDireita.setBounds(460, 100, 120, 130);
 
-        tfEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(tfEmail);
-        tfEmail.setBounds(150, 220, 310, 20);
-
         btMaoEsquerda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btMaoEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/birdpoint/imagens/imgBiometria.png"))); // NOI18N
         btMaoEsquerda.setText("Mão Esquerda");
@@ -270,11 +264,6 @@ public class CadastroProfessor extends javax.swing.JDialog {
         jLabel3.setText("Código Gennera.:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 100, 130, 20);
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Email.:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(150, 200, 80, 20);
 
         btPesquisar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/birdpoint/imagens/pesquisar.png"))); // NOI18N
@@ -321,7 +310,6 @@ public class CadastroProfessor extends javax.swing.JDialog {
         professor = new Professor();
         tfCodigo.setEnabled(true);
         tfNome.setText("");
-        tfEmail.setText("");
         tfCodigo.setText("");
         btMaoDireita.setEnabled(false);
         btMaoEsquerda.setEnabled(false);
@@ -367,7 +355,6 @@ public class CadastroProfessor extends javax.swing.JDialog {
                     professor = carregarProfessorGennera();
                     if (professor != null) {
                         tfNome.setText(professor.getNome());
-                        tfEmail.setText(professor.getEmail());
                     }
                 } else {
                     JOptionPane.showMessageDialog(this, "O código: " + tfCodigo.getText()
@@ -507,13 +494,11 @@ public class CadastroProfessor extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLObrigatorioNome;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel jlCadProfessores;
     private javax.swing.JFileChooser selecionarFoto;
     private javax.swing.JTextField tfCodigo;
-    private javax.swing.JLabel tfEmail;
     private javax.swing.JLabel tfNome;
     // End of variables declaration//GEN-END:variables
 }

@@ -42,9 +42,6 @@ public class Professor {
 
     private String cpf;
 
-    @Transient
-    private String email;
-
     /**
      * @return the idProfessor
      */
@@ -129,20 +126,6 @@ public class Professor {
      */
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     /**

@@ -228,11 +228,11 @@ public class CadastroPontoAluno extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Nome.:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(150, 140, 80, 20);
+        jLabel9.setBounds(150, 150, 80, 20);
 
         tfNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(tfNome);
-        tfNome.setBounds(150, 160, 310, 20);
+        tfNome.setBounds(150, 170, 310, 20);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Tipo de Usuário.:");

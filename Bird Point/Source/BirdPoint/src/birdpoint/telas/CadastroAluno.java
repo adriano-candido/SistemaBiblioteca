@@ -71,13 +71,6 @@ public class CadastroAluno extends javax.swing.JDialog {
             Gson gson = new Gson();
 
             alunoRest = gson.fromJson(alunoDAO.getREST("https://api.gennera.com.br/service/aluno/" + tfMatricula.getText()), Aluno.class);
-            Aluno[] alunoArray = gson.fromJson(alunoDAO.getREST("https://api.gennera.com.br/service/aluno/cpf/" + alunoRest.getCpf() + "/anoexercicio/" + Util.semestreLetivo()), Aluno[].class);
-            alunoRest.setCodigoAluno(alunoArray[0].getCodigoAluno());
-            alunoRest.setDescricaoTurno(alunoArray[0].getDescricaoTurno());
-            alunoRest.setNomeAluno(alunoArray[0].getNomeAluno());
-            alunoRest.setNomeCurso(alunoArray[0].getNomeCurso());
-            alunoRest.setSituacaoMatricula(alunoArray[0].getSituacaoMatricula());
-            alunoRest.setEmailAluno(alunoArray[0].getEmailAluno());
             tfMatricula.setEnabled(false);
             btMaoDireita.setEnabled(true);
             btMaoEsquerda.setEnabled(true);
@@ -85,7 +78,6 @@ public class CadastroAluno extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Não foi possível carregar o aluno da base Gennera! \n\nOs motivos que poderiam ter levado a isso são:"
                     + "\n- Matrícula incorreta;"
-                    + "\n- Aluno não matriculado para o período " + Util.semestreLetivo() + ";"
                     + "\n- Internet instável.");
             tfMatricula.setEnabled(true);
         }
@@ -113,19 +105,11 @@ public class CadastroAluno extends javax.swing.JDialog {
         btFoto = new javax.swing.JButton();
         btCarregar = new javax.swing.JButton();
         btMaoDireita = new javax.swing.JButton();
-        tfEmail = new javax.swing.JLabel();
         btMaoEsquerda = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         btPesquisar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
         tfNome = new javax.swing.JLabel();
-        tfCurso = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        tfSituacao = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        tfTurno = new javax.swing.JLabel();
         jlCadProfessores = new javax.swing.JLabel();
 
         selecionarFoto.setMaximumSize(new java.awt.Dimension(580, 245));
@@ -261,10 +245,6 @@ public class CadastroAluno extends javax.swing.JDialog {
         getContentPane().add(btMaoDireita);
         btMaoDireita.setBounds(460, 100, 120, 130);
 
-        tfEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(tfEmail);
-        tfEmail.setBounds(150, 280, 310, 20);
-
         btMaoEsquerda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btMaoEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/birdpoint/imagens/imgBiometria.png"))); // NOI18N
         btMaoEsquerda.setText("Mão Esquerda");
@@ -286,16 +266,6 @@ public class CadastroAluno extends javax.swing.JDialog {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 100, 80, 20);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Email.:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(150, 260, 80, 20);
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Turno.:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(150, 220, 80, 20);
-
         btPesquisar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/birdpoint/imagens/pesquisar.png"))); // NOI18N
         btPesquisar.setText("Pesquisar");
@@ -311,36 +281,14 @@ public class CadastroAluno extends javax.swing.JDialog {
         getContentPane().add(btPesquisar);
         btPesquisar.setBounds(190, 330, 99, 70);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setText("Sit. Matrícula");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(30, 280, 110, 17);
-
         tfNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(tfNome);
-        tfNome.setBounds(150, 160, 310, 20);
-
-        tfCurso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(tfCurso);
-        tfCurso.setBounds(150, 200, 310, 20);
+        tfNome.setBounds(150, 170, 310, 20);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Nome.:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(150, 140, 80, 20);
-
-        tfSituacao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(tfSituacao);
-        tfSituacao.setBounds(50, 300, 60, 20);
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setText("Curso.:");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(150, 180, 80, 20);
-
-        tfTurno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(tfTurno);
-        tfTurno.setBounds(150, 240, 310, 20);
+        jLabel9.setBounds(150, 150, 80, 20);
 
         jlCadProfessores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/birdpoint/imagens/cadBiometria1.png"))); // NOI18N
         jlCadProfessores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -363,11 +311,7 @@ public class CadastroAluno extends javax.swing.JDialog {
         aluno = new Aluno();
         tfMatricula.setEnabled(true);
         tfNome.setText("");
-        tfEmail.setText("");
         tfMatricula.setText("");
-        tfSituacao.setText("");
-        tfTurno.setText("");
-        tfCurso.setText("");
         btMaoDireita.setEnabled(false);
         btMaoEsquerda.setEnabled(false);
         btCarregar.setEnabled(true);
@@ -409,14 +353,10 @@ public class CadastroAluno extends javax.swing.JDialog {
     private void btCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCarregarActionPerformed
         try {
             if (!tfMatricula.getText().isEmpty()) {
-                if (alunoDAO.checkExistsMatricula("codigoAluno", Integer.parseInt(tfMatricula.getText())).isEmpty() || cadastroPermitido) {
+                if (alunoDAO.checkExistsMatricula("codigo", Integer.parseInt(tfMatricula.getText())).isEmpty() || cadastroPermitido) {
                     aluno = carregarAlunoGennera();
                     if (aluno != null) {
                         tfNome.setText(aluno.getNomeAluno());
-                        tfEmail.setText(aluno.getEmailAluno());
-                        tfCurso.setText(aluno.getNomeCurso());
-                        tfTurno.setText(aluno.getDescricaoTurno());
-                        tfSituacao.setText(aluno.getSituacaoMatricula());
                     }
                 } else {
                     JOptionPane.showMessageDialog(this, "A matrícula: " + tfMatricula.getText()
@@ -428,7 +368,6 @@ public class CadastroAluno extends javax.swing.JDialog {
         } catch (UnirestException ex) {
             JOptionPane.showMessageDialog(this, "Não foi possível carregar o aluno da base Gennera! \n\nOs motivos que poderiam ter levado a isso são:"
                     + "\n- Matrícula incorreta;"
-                    + "\n- Aluno não matriculado para o período " + Util.semestreLetivo() + ";"
                     + "\n- Internet instável.");
         }
 
@@ -554,20 +493,12 @@ public class CadastroAluno extends javax.swing.JDialog {
     private javax.swing.JButton btVoltar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLObrigatorioNome;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel jlCadProfessores;
     private javax.swing.JFileChooser selecionarFoto;
-    private javax.swing.JLabel tfCurso;
-    private javax.swing.JLabel tfEmail;
     private javax.swing.JTextField tfMatricula;
     private javax.swing.JLabel tfNome;
-    private javax.swing.JLabel tfSituacao;
-    private javax.swing.JLabel tfTurno;
     // End of variables declaration//GEN-END:variables
 }

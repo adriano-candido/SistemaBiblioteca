@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package birdpoint.telas;
+import static java.lang.Thread.sleep;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,11 +13,33 @@ package birdpoint.telas;
  */
 public class TelaAguardando extends javax.swing.JFrame {
 
+    Integer contador = 0;
     /**
      * Creates new form TelaAguardando
      */
+    
+    Thread telaCarregando = new Thread(() -> { 
+        funcaoContador();
+    });
     public TelaAguardando() {
         initComponents();
+        telaCarregando.start();
+    }
+    
+    public void funcaoContador(){
+        try{
+        while(contador<=30){
+        tfContador.setText("( "+contador+" )");
+        contador++;
+        sleep(1000);
+        }
+        if(contador>30){
+            JOptionPane.showMessageDialog(null, "Não foi possível se conectar ao servidor!");
+            System.exit(0);
+        }
+        }catch(Exception e){
+            
+        }
     }
 
     /**
@@ -27,8 +51,9 @@ public class TelaAguardando extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tfTipoUsuario = new javax.swing.JLabel();
+        tfContador = new javax.swing.JLabel();
         tfImagem = new javax.swing.JLabel();
+        tfTipoUsuario1 = new javax.swing.JLabel();
         jlPesquisar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -38,14 +63,19 @@ public class TelaAguardando extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(430, 210));
         getContentPane().setLayout(null);
 
-        tfTipoUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        tfTipoUsuario.setText("Carregando dados, Aguarde!");
-        getContentPane().add(tfTipoUsuario);
-        tfTipoUsuario.setBounds(80, 30, 300, 30);
+        tfContador.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        tfContador.setText("()");
+        getContentPane().add(tfContador);
+        tfContador.setBounds(190, 60, 80, 30);
 
         tfImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/birdpoint/imagens/loading_bigMenor.gif"))); // NOI18N
         getContentPane().add(tfImagem);
         tfImagem.setBounds(180, 100, 50, 60);
+
+        tfTipoUsuario1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tfTipoUsuario1.setText("Carregando dados, Aguarde!");
+        getContentPane().add(tfTipoUsuario1);
+        tfTipoUsuario1.setBounds(80, 30, 300, 30);
 
         jlPesquisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jlPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/birdpoint/imagens/pesquisar_1.png"))); // NOI18N
@@ -94,7 +124,8 @@ public class TelaAguardando extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jlPesquisar;
+    private javax.swing.JLabel tfContador;
     private javax.swing.JLabel tfImagem;
-    private javax.swing.JLabel tfTipoUsuario;
+    private javax.swing.JLabel tfTipoUsuario1;
     // End of variables declaration//GEN-END:variables
 }

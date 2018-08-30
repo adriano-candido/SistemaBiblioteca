@@ -39,6 +39,7 @@ public class CadastroPontoAluno extends javax.swing.JFrame {
     List<Professor> listaProfessores;
     Professor professor = new Professor();
     ProfessorDAO professorDAO = new ProfessorDAO();
+  
 
     boolean situacaoLeitor = true;
 
@@ -54,19 +55,28 @@ public class CadastroPontoAluno extends javax.swing.JFrame {
             System.out.println("Erro2");
         }
     });
+    
+    Thread telaCarregando = new Thread(() -> { 
+        carregarDados();
+    });
 
     /**
      * Creates new form CadastroPontoAluno
      */
     public CadastroPontoAluno() {
-        initComponents();
-        ponto.start();
+       initComponents();
+       ponto.start();
+       telaCarregando.start();
+    }
+    
+    public void carregarDados(){
+        int contador = 0;
         TelaAguardando aguarde = new TelaAguardando();
         aguarde.setVisible(true);
         listaAlunos = alunoDAO.listar();
         listaProfessores = professorDAO.listar();
         tfCodigo.grabFocus();
-        
+        aguarde.dispose();
     }
 
     //este método ativará as teclas (Ctrl+C)
@@ -280,7 +290,7 @@ public class CadastroPontoAluno extends javax.swing.JFrame {
         jcTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aluno", "Professor" }));
         jcTipoUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
         getContentPane().add(jcTipoUsuario);
-        jcTipoUsuario.setBounds(370, 100, 210, 23);
+        jcTipoUsuario.setBounds(370, 100, 210, 29);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Código Biblioteca.:");

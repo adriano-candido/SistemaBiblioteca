@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 public class TelaAguardando extends javax.swing.JFrame {
 
     Integer contador = 0;
+    boolean carregou = false;
     /**
      * Creates new form TelaAguardando
      */
@@ -28,12 +29,12 @@ public class TelaAguardando extends javax.swing.JFrame {
     
     public void funcaoContador(){
         try{
-        while(contador<=30){
+        while(contador<=30 && !carregou){
         tfContador.setText("( "+contador+" )");
         contador++;
         sleep(1000);
         }
-        if(contador>30){
+        if(!carregou){
             JOptionPane.showMessageDialog(null, "Não foi possível se conectar ao servidor!");
             System.exit(0);
         }

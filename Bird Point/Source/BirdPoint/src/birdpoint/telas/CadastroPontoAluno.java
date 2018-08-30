@@ -76,6 +76,7 @@ public class CadastroPontoAluno extends javax.swing.JFrame {
         listaAlunos = alunoDAO.listar();
         listaProfessores = professorDAO.listar();
         tfCodigo.grabFocus();
+        aguarde.carregou = true;
         aguarde.dispose();
     }
 
